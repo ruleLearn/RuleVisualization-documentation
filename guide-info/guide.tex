@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+\usepackage[ruled]{algorithm2e}
+\usepackage[noend]{algpseudocode}
+\usepackage{numberedblock}
+\usepackage{lipsum}
+\usepackage[autostyle]{csquotes}
+\usepackage{hyperref}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color[rgb]{0, 0.4, 0}\ttfamily,
+  stringstyle=\color[rgb]{0.4, 0, 0}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{white},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\newlength\mylen
+\newcommand\myinput[1]{%
+  \settowidth\mylen{\KwIn{}}%
+  \setlength\hangindent{\mylen}%
+  \hspace*{\mylen}#1\\}
+
+\newcommand{\appname}{RuleVisualization}
+\newcommand{\appnameit}{\textit{RuleVisualization}}
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\title{\appname \ -- User guide}
+\author{Mateusz Lewandowski}
+
+\begin{document}
+
+\maketitle
+
+For current version of user documentation please visit\\ \href{https://github.com/ruleLearn/RuleVisualization-documentation/releases}{https://github.com/ruleLearn/RuleVisualization-documentation/releases}\\
+and download the latest release of PDF user guide.
+
+\end{document}

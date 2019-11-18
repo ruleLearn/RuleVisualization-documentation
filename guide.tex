@@ -10,6 +10,7 @@
 \usepackage{numberedblock}
 \usepackage{lipsum}
 \usepackage[autostyle]{csquotes}
+\usepackage{hyperref}
 
 \lstdefinelanguage{JavaScript}{
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
@@ -49,7 +50,7 @@
 
 \newcommand{\appname}{RuleVisualization}
 \newcommand{\appnameit}{\textit{RuleVisualization}}
-\newcommand{\appversion}{1.1.0}
+\newcommand{\appversion}{1.1.1}
 
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 
@@ -63,11 +64,15 @@
 
 \pagebreak
 
-\section{Installation}
+\section{Introduction}
+
+\subsection{Installation}
+
+Each released version of \texttt{RuleVisualization} application can be downloaded from \href{https://github.com/ruleLearn/RuleVisualization-release/releases}{https:github.com/ruleLearn/RuleVisualization-release/releases}, as a ZIP archive. After downloading the archive, one just needs to extract it to a directory of choice. No installation is required. Nevertheless, for the application to work one needs to have Java Runtime Environment (JRE) 8 or higher installed in the operating system.
 
 \subsection{Running application}\label{subsec:server}
 
-Application consists of client and server folder. 
+RuleVisualization consists of client and server applications. 
 Requirements:
 \begin{itemize}
     \setlength\itemsep{0em}
@@ -75,7 +80,7 @@ Requirements:
     \item Internet browser. 
 \end{itemize}
 
-To run application:
+To run the application:
 \begin{enumerate}
     \setlength\itemsep{0em}
     \item Run server on specified port number (8081 by default):\\
@@ -84,77 +89,89 @@ To run application:
     \item Enter address of server URL on \texttt{index.html} webpage.
 \end{enumerate}
 
-\subsection{Application development}
-
-Server development (Java):
-\begin{enumerate}
-    \setlength\itemsep{0em}
-    \item Compile project.\\
-          \texttt{mvn compile}
-    \item Modify code.
-    \item Generate JAR file into \texttt{target/server.jar}.\\
-          \texttt{mvn clean install}
-\end{enumerate}
-
-Client development (Vue.js):
-\begin{enumerate}
-    \setlength\itemsep{0em}
-    \item Install modules defined in \texttt{package.json} (first project run):\\
-          \texttt{npm install}
-    \item Enable hot reloading on \texttt{http://localhost:8080}: \\
-          \texttt{npm run serve}
-    \item Modify code.
-    \item Build application into \texttt{dist} folder:\\
-          \texttt{npm run build}
-\end{enumerate}
+%\subsection{Application development}
+%
+%Server development (Java, requires Java JDK 8 or higher):
+%\begin{enumerate}
+%    \setlength\itemsep{0em}
+%    \item Compile project.\\
+%          \texttt{mvn compile}
+%    \item Modify code.
+%    \item Generate JAR file into \texttt{target/server.jar}.\\
+%          \texttt{mvn clean install}
+%\end{enumerate}
+%
+%Client development (Vue.js; requires node.js):
+%\begin{enumerate}
+%    \setlength\itemsep{0em}
+%    \item Install modules defined in \texttt{package.json} (first project run):\\
+%          \texttt{npm install}
+%    \item Enable hot reloading on \texttt{http://localhost:8080}: \\
+%          \texttt{npm run serve}
+%    \item Modify code.
+%    \item Build application into \texttt{dist} folder:\\
+%          \texttt{npm run build}
+%\end{enumerate}
 
 \pagebreak
 
 \section{Setup}
 
-Setup tab is used for loading data and configuring attributes and characteristics. In general 4 types of objects can be distinguished: attributes, rules, examples and characteristics (rules file). 
+\texttt{Setup} tab is used to load data as well as configure attributes and rule's characteristics. In general, four types of objects can be distinguished: attributes, rules, examples (objects), and characteristics (loaded along with rules). 
 
 \subsection{Loading data}
-Data can be entered from local file system:
+Data can be loaded using the \texttt{Setup} tab -- see Fig. \ref{fig:setup}.
+Data can be loaded from the local file system:
 \begin{enumerate}
     \setlength\itemsep{0em}
-    \item Enter URL for server with ruleLearn library (see running server: \ref{subsec:server}).
-    \item Browse file with attributes (JSON format) - required.
-    \item Browse file with rules (XML format) - required.
-    \item Browse file with examples (JSON format) - optional.
-    \item Click Load Button.
-    \item After loading data: status message, tabs and configuration will be displayed (or updated).
+    \item Enter URL for server application (see running server: \ref{subsec:server}).
+    \item Browse for file with attributes (JSON format) -- required.
+    \item Browse for file with rules (XML format) -- required.
+    \item Browse for file with examples (JSON format) -- optional.
+    \item Click \texttt{Load} button.
+    \item After loading data: status message, main tabs, and configuration tabs will be displayed (or updated).
 \end{enumerate}
 
 \begin{figure}[H]
     \centering
-    \includegraphics{figures/B-setup.png}
+    \includegraphics[width=\textwidth]{figures/setup.png}
+    \caption{\texttt{Setup} tab}\label{fig:setup}
 \end{figure}
 
-Alternatively data can be loaded from server demo data sets:
+Alternatively, data can be loaded from server demo data sets:
 \begin{enumerate}
     \setlength\itemsep{0em}
-    \item Enter URL for server with ruleLearn library (see running server: \ref{subsec:server}).
+    \item Enter \texttt{Server URL} (see running server: \ref{subsec:server}).
     \item Select a data set.
-    \item Click Load demo.
-    \item After loading data: status message, tabs and configuration will be displayed (or updated).
+    \item Click \texttt{Load demo}.
+    \item After loading data: status message, main tabs, and configuration tabs will be displayed (or updated).
 \end{enumerate}
 
-Format of files is compatible with format of files generated by ruleLearn library \\(github.com/ruleLearn/rulelearn). In order to get familiar with format, there is option for downloading sample (demo) files by clicking ``Download demo''.
+Format of files is compatible with format of files generated by \href{https://github.com/ruleLearn/rulelearn}{ruleLearn library}. In order to get familiar with that format, there is an option to download sample (demo) files by clicking \texttt{Download demo}.
 
-\subsection{Configuration - optional}
+After clicking \texttt{PDF guide}, it is possible to download most up-to-date version of this user documentation.
 
-Configuration enables user to explore loaded attributes and characteristics. This step is fully optional it can be omitted. Name of this objects can be displayed with another name (e.g. shorter name) in filtering and characteristics section. Type, value-type, domain, active are object properties loaded from JSON file (read only). Property Filter is used for show/hide objects in filtering section, Table - show/hide in Rules table. Min and max are the minimum and maximum values of objects' domains. They are used for: filtering section (slider range), \textbf{computing similarity and coloring edges/nodes in rules graph (based on domains' ranges)}. Steps are only used for filtering section (how many intervals slider contains). Values Min and Max are by default:
+\subsection{Configuration (optional)}
+
+Configuration enables user to configure loaded attributes and characteristics -- see Fig. \ref{fig:configure-attributes} and Fig. \ref{fig:configure-characteristics}. This step is fully optional and can be omitted. Names of particular attributes and characteristics can be adjusted to be displayed differently (e.g., in short or abbreviated) in \texttt{Filter} and \texttt{Match} tabs. \texttt{Type}, \texttt{Value type/domain}, \texttt{Active}, are properties of attributes loaded from JSON file, and are read only. Property \texttt{Filter} is used to show/hide characteristic or attribute in \texttt{Filter} tab. Property \texttt{Rules} is used to show/hide column with values of given characteristic in \texttt{Rules} tab. \texttt{Min} and \texttt{Max} are the minimum and maximum values in the domains of attributes or characteristics. They are used for: filtering (slider range) in \texttt{Filter} tab and for \textbf{computing similarity of rules and coloring edges/nodes} in \texttt{Graph} tab (based on domains' ranges). \texttt{Steps} are only used in \texttt{Filter} tab (number of steps determines how many intervals respective slider contains). Values \texttt{Min} and \texttt{Max} are initialized in the following way:
 \begin{itemize}
     \setlength\itemsep{0em}
-    \item for attributes: read from rules file (min and max occurrence),
-    \item for characteristics: predefined values if ranges are known for characteristic (e.g. Strength is from 0 to 1), otherwise read from rules file (e.g. Support is from 0 to max occurrence in rules file).
+    \item for an attribute -- based on the loaded file with decision rules: minimal and maximal value in the set of all thresholds appearing in elementary conditions concerning this attribute,
+    \item for a characteristic: using predefined values if the range for that characteristic is known a priori (e.g., \texttt{Strength} changes from 0 to 1), otherwise, based on the loaded file with decision rules (e.g., \texttt{Min} for \texttt{Support} is set to 0, and \texttt{Max} is set to maximum support value found among loaded rules).
 \end{itemize}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/B-configure.png}
+    \includegraphics[width=\textwidth]{figures/configure-attributes.png}
+    \caption{Configuration of attributes}\label{fig:configure-attributes}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figures/configure-characteristics.png}
+    \caption{Configuration of characteristics}\label{fig:configure-characteristics}
+\end{figure}
+
 
 \section{Filtering and matching rules}
 
